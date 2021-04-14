@@ -1,8 +1,10 @@
 # Импортируем необходимые классы.
 from telegram.ext import Updater, MessageHandler, Filters
 from telegram.ext import CallbackContext, CommandHandler
-from time import asctime
+from time import asctime\
+import os
 
+PORT = int(os.environ.get('PORT', 5000))
 TOKEN = "1729251878:AAGa7vHVF1XL1Kr9TlsTar5x6xSNPIs-u5M"
 
 
@@ -47,7 +49,10 @@ def main():
     dp.add_handler(CommandHandler('time', time))
     dp.add_handler(text_handler)
     # Запускаем цикл приема и обработки сообщений.
-    updater.start_polling()
+    updater.start_webhook(listen="0.0.0.0",
+                          port=int(PORT),
+                          url_path=TOKEN)
+    updater.bot.setWebhook('https://yan-bot-sergt.herokuapp.com/' + TOKEN)
 
     # Ждём завершения приложения.
     # (например, получения сигнала SIG_TERM при нажатии клавиш Ctrl+C)
