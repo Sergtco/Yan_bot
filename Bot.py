@@ -1,7 +1,7 @@
 # Импортируем необходимые классы.
 from telegram.ext import Updater, MessageHandler, Filters
 from telegram.ext import CallbackContext, CommandHandler
-from time import asctime\
+from time import asctime
 import os
 
 PORT = int(os.environ.get('PORT', 5000))
