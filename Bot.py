@@ -49,11 +49,10 @@ def main():
     dp.add_handler(CommandHandler('time', time))
     dp.add_handler(text_handler)
     # Запускаем цикл приема и обработки сообщений.
+    updater.bot.setWebhook('https://yan-bot-sergt.herokuapp.com/' + TOKEN)
     updater.start_webhook(listen="0.0.0.0",
                           port=PORT,
                           url_path=TOKEN)
-    updater.bot.setWebhook(('https://yan-bot-sergt.herokuapp.com/' + TOKEN))
-
     # Ждём завершения приложения.
     # (например, получения сигнала SIG_TERM при нажатии клавиш Ctrl+C)
     updater.idle()
