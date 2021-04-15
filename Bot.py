@@ -4,7 +4,7 @@ from telegram.ext import CallbackContext, CommandHandler
 from time import asctime
 import os
 
-PORT = int(os.environ.get('PORT', 5000))
+PORT = int(os.environ.get('PORT', 80))
 TOKEN = "1729251878:AAGa7vHVF1XL1Kr9TlsTar5x6xSNPIs-u5M"
 
 
@@ -52,7 +52,7 @@ def main():
     updater.start_webhook(listen="0.0.0.0",
                           port=PORT,
                           url_path=TOKEN)
-    updater.bot.setWebhook(('https://yan-bot-sergt.herokuapp.com/' + TOKEN))
+    updater.bot.setWebhook('https://yan-bot-sergt.herokuapp.com/' + TOKEN)
 
     # Ждём завершения приложения.
     # (например, получения сигнала SIG_TERM при нажатии клавиш Ctrl+C)
