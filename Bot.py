@@ -17,6 +17,7 @@ def echo(update, context):
     # а также метод reply_text(str),
     # отсылающий ответ пользователю, от которого получено сообщение.
     update.message.reply_text(f'Я получил сообщение {update.message.text}')
+    print(update.message.text)
 
 def date(update, context):
     cur_time = str(asctime()).split()
@@ -49,7 +50,7 @@ def main():
     dp.add_handler(CommandHandler('time', time))
     dp.add_handler(text_handler)
     # Запускаем цикл приема и обработки сообщений.
-    updater.start_webhook(listen="0.0.0.0",
+    updater.start_webhook(listen="0.1.0.3",
                           port=int(PORT),
                           url_path=TOKEN)
     updater.bot.setWebhook('https://yan-bot-sergt.herokuapp.com/' + TOKEN)
